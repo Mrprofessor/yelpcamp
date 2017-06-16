@@ -1,0 +1,19 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Udemy The web developer bootcamp final Project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrprofessor/yelpcamp.git"
+  },
+  "author": "Mrprofessor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mrprofessor/yelpcamp/issues"
+  },
+  "homepage": "https://github.com/Mrprofessor/yelpcamp#readme"
+}
