@@ -22,6 +22,24 @@ var campgrounds = [{
 }, {
 	name: "Mountain Goats Rest",
 	image: "imgs/pic3.jpg"
+}, {
+	name: "Salmon Creek",
+	image: "imgs/pic1.jpg"
+}, {
+	name: "Granite Hill",
+	image: "imgs/pic2.jpg"
+}, {
+	name: "Mountain Goats Rest",
+	image: "imgs/pic3.jpg"
+}, {
+	name: "Salmon Creek",
+	image: "imgs/pic1.jpg"
+}, {
+	name: "Granite Hill",
+	image: "imgs/pic2.jpg"
+}, {
+	name: "Mountain Goats Rest",
+	image: "imgs/pic3.jpg"
 }];
 
 
