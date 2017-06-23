@@ -10,13 +10,13 @@
 		</div>
 	</header>
 
-
-	<% campgrounds.forEach(function(camp){ %>
-		<div>
-			<h1><%= camp.name %></h1>
-			<img src="<%= camp.image %>" alt="camp">
-		</div>
-	<% }) %>
-
+	<div class="row">
+		<% campgrounds.forEach(function(camp){ %>
+			<div class="col-md-3 col-sm-6">
+				<h1><%= camp.name %></h1>
+				<img src="<%= camp.image %>" alt="camp">
+			</div>
+		<% }) %>
+	</div>
 </div>
 <% include partials/footer %>
