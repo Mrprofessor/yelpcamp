@@ -64,6 +64,11 @@ app.post("/campgrounds",function(req, res){
 	campgrounds.push(newCampground);
 	res.redirect("/campgrounds");
 });
-app.listen(3000, function(){
-	console.log("Example app listening on port 3000");
-})
+// app.listen(3000, function(){
+// 	console.log("Example app listening on port 3000");
+// });
+
+//C9.io
+app.listen(process.env.PORT, process.env.IP, function() {
+    console.log("The YelpCamp server has started.");
+});
