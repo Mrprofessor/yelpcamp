@@ -1,8 +1,30 @@
-var express = require("express");
-var app = express();
+var express 	= require("express"),
+	app 		= express(),
+	bodyParser	= require("body-parser"),
+	mongoose	= require("mongoose");
 
-var bodyParser = require("body-parser");
+mongoose.connect("mongodb://localhost/yelp_camp");
 
+var campgroundsSchema = new mongoose.Schema ({
+		name: String,
+		image: String
+});
+
+var Campground = mongoose.model("Campground", campgroundsSchema);
+
+// Campground.create(
+// 	{
+// 		name: "Granite Hill",
+// 		image: "imgs/camp2.jpg",
+// 		description: "This is a huge granite hill, No bathrooms, No water, Beautiful granite."
+// }, function(err, campground){
+// 	if (err){
+// 		console.log(err);
+// 	} else {
+// 		console.log("NEWLY CREATED CAMPGROUND.");
+// 		console.log(campground);
+// 	}
+// });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -14,44 +36,36 @@ app.get('/', function(req,res){
 	res.render("landing");
 });
 
-var campgrounds = [{
-	name: "Salmon Creek",
-	image: "imgs/pic1.jpg"
-}, {
-	name: "Granite Hill",
-	image: "imgs/pic2.jpg"
-}, {
-	name: "Mountain Goats Rest",
-	image: "imgs/pic3.jpg"
-}, {
-	name: "Salmon Creek",
-	image: "imgs/pic1.jpg"
-}, {
-	name: "Granite Hill",
-	image: "imgs/pic2.jpg"
-}, {
-	name: "Mountain Goats Rest",
-	image: "imgs/pic3.jpg"
-}, {
-	name: "Salmon Creek",
-	image: "imgs/pic1.jpg"
-}, {
-	name: "Granite Hill",
-	image: "imgs/pic2.jpg"
-}, {
-	name: "Mountain Goats Rest",
-	image: "imgs/pic3.jpg"
-}];
-
 
 app.get('/campgrounds', function(req,res){
+//Get all campgrounds from the db
+	Campground.find({}, function (err, allCampgrounds) {
+		// body...
+		if(err) {
+			console.log(err);
+		} else {
+			res.render("index", {campgrounds: allCampgrounds})
+		}
+	});
 
-	res.render("campgrounds", {campgrounds: campgrounds});
 })
 
 app.get("/campgrounds/new", function(req, res){
 	res.render("new.ejs");
 });
+
+app.get("/campgrounds/:id", function(req, res){
+	//Find the campground with provided id
+	Campground.findById(req.params.id, function(err, foundCampground){
+		if(err){
+			console.log(err);
+		} else {
+			res.render("show", {campground: foundCampground});
+		}
+	});	
+});
+
+
 
 app.post("/campgrounds",function(req, res){
 	//res.send("You hit the post route.")
@@ -59,11 +73,21 @@ app.post("/campgrounds",function(req, res){
 	//redirect back to campgrounds page
 	var name = req.body.name;
 	var image = req.body.image;
+	var desc = req.body.description;
 	console.log(image);
-	var newCampground = {name: name, image: image};
+	var newCampground = {name: name, image: image, description: desc};
 	campgrounds.push(newCampground);
 	res.redirect("/campgrounds");
 });
+
+
+
+
+
+
+
+
+
 // app.listen(3000, function(){
 // 	console.log("Example app listening on port 3000");
 // });
