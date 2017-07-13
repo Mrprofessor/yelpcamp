@@ -7,8 +7,9 @@ const express 			= require('express'),
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended : true}));
 
-mongoose.connect('mongodb://localhost/yelp_camp');
+mongoose.connect('mongodb://localhost/yelp_camp',{ useMongoClient: true });
 const CampgroundsSchema = new mongoose.Schema ({
 	name : String,
 	image: String,
@@ -48,6 +49,34 @@ app.get('/campgrounds', function(req, res){
 app.get('/campgrounds/new', function(req, res){
 	res.render('new');
 });
+
+app.post('/campgrounds', function(req, res){
+
+	let newCampground = {
+		name : req.body.name,
+		image: req.body.image,
+		description : req.body.description
+	}
+
+	Campground.create(newCampground, function(err, newCreated){
+		if (err) {
+			console.log(err);
+			res.redirect('/campgrounds/new');
+		} else {
+			res.redirect('/campgrounds');
+		}
+	})
+});
+
+app.get('/campgrounds/:id/', function(req, res){
+	Campground.findById(req.params.id, function(err, foundCamp){
+		if (err) {
+			res.send('<h2>Page not found</h2>');
+		} else {
+			res.render('show', {campgrounds : foundCamp});
+		}
+	})
+})
 
 app.listen(3000, function(){
 	console.log('Yelpcamp V1.0 is running...');

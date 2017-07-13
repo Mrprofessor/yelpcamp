@@ -1,0 +1,14 @@
+<% include partials/header %>
+
+<div class="container">
+	<div class="row">
+		<% campgrounds.forEach(function(camp) {%>
+
+			<h2>This is <%= camp.name %></h2>
+			<img src="<%= camp.image %>">
+			<p><%= camp.description %></p>
+		<%});%>
+	</div>
+</div>
+
+<% include ./partials/footer %>
