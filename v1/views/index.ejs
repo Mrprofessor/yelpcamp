@@ -8,6 +8,20 @@
 			<a class="btn btn-primary" href="/campgrounds/new">Add new Campground</a>
 		</div>
 	</div>
+
+	<div class="row">
+		<% campgrounds.forEach(function(campground) {%>
+			<h2><%= campground.name %></h2>
+			<img src="<%= campground.image %>">
+			<p><%= campground.description %></p>
+		<% });%>
+	</div>
+
+
+	
 </div>
+
+
+
 
 <% include ./partials/footer %>
