@@ -73,7 +73,7 @@ app.get('/campgrounds/:id/', function(req, res){
 		if (err) {
 			res.send('<h2>Page not found</h2>');
 		} else {
-			res.render('show', {campgrounds : foundCamp});
+			res.render('show', {camp : foundCamp});
 		}
 	})
 })
