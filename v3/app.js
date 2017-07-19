@@ -26,6 +26,8 @@ mongoose.connect('mongodb://localhost/yelp_camp',{ useMongoClient: true });
 // 	}
 // });
 
+
+// RESTful Routes
 app.get('/', function(req, res){
 	res.render('landing');
 });
