@@ -6,6 +6,13 @@
 			<img src="<%= camp.image %>">
 			<p><%= camp.description %></p>
 			<a href="/campgrounds" class="btn btn-large btn-primary">Back</a>
+
+			<% camp.comments.forEach(function (component) { %>
+				<p>
+					<strong><%= comment.author %></strong> -
+					 <i><%= comment.text %></i>	
+					</p>
+			<%})%>
 	</div>
 </div>
 

@@ -6,26 +6,14 @@ const express 			= require('express'),
 	  Campground 		= require('./models/campground'),
 	  seedDB			= require('./seeds');
 
-seedDB();
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 
-mongoose.connect('mongodb://localhost/yelp_camp',{ useMongoClient: true });
+seedDB();
 
-// Campground.create(
-// 	{
-// 		name: "Port salon Camping",
-// 		image: "http://www.telegraph.co.uk/content/dam/Travel/2016/may/glamping-portsalon-PR-TRAVEL-large.jpg",
-// 		description: "Just five yurts populate this 18-acre site on Donegal’s dramatic Fanad Peninsula and all enjoy views across Lough Swilly. Wood-burners, king-size beds and exposed wood spangled with elegant lights add romance, while there’s a separate building housing the kitchen and communal space. Towels, toiletries and fresh produce from the garden are all provided. It’s a short stroll to sandy Ballymastocker Bay, voted the second best beach in the world (after the Seychelles)."
-// }, function(err, Campground){
-// 	if (err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log("New Campground created.");
-// 		console.log(Campground);
-// 	}
-// });
+mongoose.connect('mongodb://localhost/yelp_camp',{ useMongoClient: true });
 
 
 // RESTful Routes
@@ -67,10 +55,12 @@ app.post('/campgrounds', function(req, res){
 });
 
 app.get('/campgrounds/:id/', function(req, res){
-	Campground.findById(req.params.id, function(err, foundCamp){
+	Campground.findById(req.params.id).populate('comments').exec(function(err, foundCamp)
+	{
 		if (err) {
 			res.send('<h2>Page not found</h2>');
 		} else {
+			console.log("foundCamp")
 			res.render('show', {camp : foundCamp});
 		}
 	})
