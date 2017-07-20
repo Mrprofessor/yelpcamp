@@ -3,9 +3,10 @@ const express 			= require('express'),
 	  mongoose			= require('mongoose'),
 	  bodyParser		= require('body-parser'),
 	  app				= express(),
-	  Campground 		= require('./models/campground');	
+	  Campground 		= require('./models/campground'),
+	  seedDB			= require('./seeds');
 
-
+seedDB();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
