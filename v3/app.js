@@ -1,4 +1,5 @@
-const express 			= require('express'),
+
+var express 			= require('express'),
 	  ejs				= require('ejs'),
 	  mongoose			= require('mongoose'),
 	  bodyParser		= require('body-parser'),
@@ -38,7 +39,7 @@ app.get('/campgrounds/new', function(req, res){
 
 app.post('/campgrounds', function(req, res){
 
-	let newCampground = {
+	var newCampground = {
 		name : req.body.name,
 		image: req.body.image,
 		description : req.body.description
@@ -60,14 +61,22 @@ app.get('/campgrounds/:id/', function(req, res){
 		if (err) {
 			res.send('<h2>Page not found</h2>');
 		} else {
-			console.log("foundCamp")
+			console.log("foundCamp");
 			res.render('show', {camp : foundCamp});
 		}
-	})
+	});
 });
 
-app.listen(3000, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
 	console.log('Yelpcamp V3.0 is running...');
 });
+	
+
+
+
+// Local machine specific
+// app.listen(3000, function(){
+// 	console.log('Yelpcamp V3.0 is running...');
+// });
 
   
