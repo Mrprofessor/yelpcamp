@@ -1,4 +1,3 @@
-
 var express 			= require('express'),
 	  ejs				= require('ejs'),
 	  mongoose			= require('mongoose'),
@@ -67,16 +66,14 @@ app.get('/campgrounds/:id/', function(req, res){
 	});
 });
 
+
+//Local machine specific
+app.listen(3000, function(){
+	console.log('Yelpcamp V3.0 is running...');
+});
+
+
+// 
 app.listen(process.env.PORT, process.env.IP, function(){
 	console.log('Yelpcamp V3.0 is running...');
 });
-	
-
-
-
-// Local machine specific
-// app.listen(3000, function(){
-// 	console.log('Yelpcamp V3.0 is running...');
-// });
-
-  

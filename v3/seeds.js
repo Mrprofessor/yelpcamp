@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
-const Campground = require("./models/campground");
-const Comment = require('./models/comment')
+var mongoose = require("mongoose");
+var Campground = require("./models/campground");
+var Comment = require('./models/comment');
 
 
-let data = [
+var data = [
 	{
 		name : "Clouds rest",
 		image: "http://www.telegraph.co.uk/content/dam/Travel/2016/July/camp-cover2-large.jpg",
@@ -29,7 +29,7 @@ function seedDB() {
 		console.log("All data removed");
 		//Add a few campgrounds
 		data.forEach(function (seed) {
-			Campground.create(seed, function (err, data) {
+			Campground.create(seed, function (err, campground) {
 				if (err) {
 					console.log(err);
 				} else {
@@ -43,8 +43,8 @@ function seedDB() {
 							if (err) {
 								console.log(err);
 							} else {
-								Campground.comments.push(comment);
-								Campground.save();
+								campground.comments.push(comment);
+								campground.save();
 								console.log("Created new comments");	
 							}
 							
@@ -53,10 +53,6 @@ function seedDB() {
 			});
 		});
 	});
-
-	 
-
-	
 }
 
 module.exports = seedDB;
