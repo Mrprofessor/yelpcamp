@@ -68,12 +68,12 @@ app.get('/campgrounds/:id/', function(req, res){
 
 
 //Local machine specific
-app.listen(3000, function(){
-	console.log('Yelpcamp V3.0 is running...');
-});
+// app.listen(3000, function(){
+// 	console.log('Yelpcamp V3.0 is running...');
+// });
 
 
-// 
+// C9 Specific
 app.listen(process.env.PORT, process.env.IP, function(){
 	console.log('Yelpcamp V3.0 is running...');
 });
