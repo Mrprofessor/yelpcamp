@@ -1,8 +1,8 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <div class="container">
 	<div class="row">
-			<h2>This is <%= camp.name %></h2>
+			<h2>This is <b><%= camp.name %></b></h2>
 			<img src="<%= camp.image %>">
 			<p><%= camp.description %></p>
 			<a href="/campgrounds" class="btn btn-large btn-primary">Back</a>
@@ -13,7 +13,8 @@
 					 <i><%= component.text %></i>	
 					</p>
 			<%})%>
+			<a href="/campgrounds/<%= camp._id %>/comments/new" class="btn btn-success">Comment</a>
 	</div>
 </div>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>
