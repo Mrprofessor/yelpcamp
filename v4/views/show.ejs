@@ -1,0 +1,19 @@
+<% include partials/header %>
+
+<div class="container">
+	<div class="row">
+			<h2>This is <%= camp.name %></h2>
+			<img src="<%= camp.image %>">
+			<p><%= camp.description %></p>
+			<a href="/campgrounds" class="btn btn-large btn-primary">Back</a>
+
+			<% camp.comments.forEach(function (component) { %>
+				<p>
+					<strong><%= component.author %></strong> -
+					 <i><%= component.text %></i>	
+					</p>
+			<%})%>
+	</div>
+</div>
+
+<% include ./partials/footer %>

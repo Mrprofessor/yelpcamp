@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 
 seedDB();
 
-mongoose.connect('mongodb://localhost/yelp_camp',{ useMongoClient: true });
+mongoose.connect('mongodb://localhost/yelp_camp_v4',{ useMongoClient: true });
 
 
 // RESTful Routes
