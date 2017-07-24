@@ -9,7 +9,8 @@ var express 			= require('express'),
 
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended : true}));
 
 seedDB();
@@ -94,7 +95,7 @@ app.post("/campgrounds/:id/comments", function(req,res){
 			console.log(err);
 			res.redirect("/campgrounds");
 		} else {
-			console.log(req.body.comment);
+			// console.log(req.body.comment);
 			// CREATE NEW COMMENT
 			Comment.create(req.body.comment, function(err, comment){
 				if (err) {
@@ -126,22 +127,3 @@ app.listen(3000, function(){
 // 	console.log('Yelpcamp V3.0 is running...');
 // });
 
-/* 
-<!-- <div class="container">
-	<div class="row">
-			<h2>This is <b><%= camp.name %></b></h2>
-			<img src="<%= camp.image %>">
-			<p><%= camp.description %></p>
-			<a href="/campgrounds" class="btn btn-large btn-primary">Back</a>
-
-			<% camp.comments.forEach(function (component) { %>
-				<p>
-					<strong><%= component.author %></strong> -
-					 <i><%= component.text %></i>	
-					</p>
-			<%})%>
-			<a href="/campgrounds/<%= camp._id %>/comments/new" class="btn btn-success">Comment</a>
-	</div>
-</div> -->
-
-*/
