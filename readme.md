@@ -8,7 +8,8 @@ Each Campground has
 
 * Name
 * Image
+* Description
 
-# Layout and BAsic Styling
+# Layout and Basic Styling
 * Create our header and footer partials
 * Add in Bootstrap
