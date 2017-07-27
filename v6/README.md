@@ -26,3 +26,7 @@
 ## Auth part - 5 - ShowHide links
 	
 	* Show/Hide auth links in navbar correctly
+
+## Refactor the routes
+	
+	* Use express router to reorganize all routes

@@ -203,13 +203,12 @@ function isLoggedIn(req, res, next){
 }
 
 //Local machine specific
-app.listen(3000, function(){
-	console.log('Yelpcamp_v6 started....!!')
-});
-
+// app.listen(3000, function(){
+// 	console.log('Yelpcamp_v6 started....!!')
+// });
 
 // C9 Specific
-// app.listen(process.env.PORT, process.env.IP, function(){
-// 	console.log('Yelpcamp V3.0 is running...');
-// });
+app.listen(process.env.PORT, process.env.IP, function(){
+	console.log('Yelpcamp V3.0 is running...');
+});
 
