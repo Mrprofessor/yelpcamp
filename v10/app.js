@@ -1,5 +1,4 @@
 "use strict";
-
 const express 			= require('express'),
 	  ejs				= require('ejs'),
 	  mongoose			= require('mongoose'),
