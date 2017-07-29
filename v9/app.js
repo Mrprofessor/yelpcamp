@@ -50,7 +50,6 @@ app.use('/', indexRoutes);
 app.use('/campgrounds',campgroundRoutes);
 app.use('/campgrounds/:id/comments',commentRoutes);
 
-
 // C9 Specific
 app.listen(process.env.PORT, process.env.IP, function(){
 	console.log('Yelpcamp V9.0 is running...');
