@@ -31,7 +31,6 @@ app.use(flash());
 // const process.env.DATABASEURL = mongodb://localhost/yelp_camp;
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASEURL,{ useMongoClient: true });
-// mongoose.connect('mongodb://prof:hellorudra@ds153413.mlab.com:53413/yelpcamp007',{ useMongoClient: true });
 // mongodb://<dbuser>:<dbpassword>@ds153413.mlab.com:53413/yelpcamp007
 
 
